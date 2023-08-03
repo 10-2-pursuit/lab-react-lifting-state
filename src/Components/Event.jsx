@@ -1,13 +1,6 @@
 import Attendees from "./Attendees";
-import { useState } from "react";
 
-export default function Event({ events, setEvents }) {
-  const [showAttendees, setShowAttendees] = useState(false);
-  
-  function toggleEventAttendees() {
-    setShowAttendees(!showAttendees);
-  }
-
+export default function Event({ events, setEvents, showAttendees, toggleEventAttendees}) {
   return(
     <div className="events">
       <ul>
