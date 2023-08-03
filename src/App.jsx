@@ -1,6 +1,5 @@
 import { useState } from "react";
 import eventsData from "./data";
-import { v1 as generateUniqueID } from "uuid";
 // import Attendees from "./Attendees";
 // import Event from "./Components/Event";
 import Footer from "./Components/Footer";
@@ -11,20 +10,6 @@ function App() {
   const [events, setEvents] = useState(eventsData);
 
   const [showAttendees, setShowAttendees] = useState(false);
-
-  const [selectOption, setSelectOption] = useState("");
-
-  function resetEventForm() {
-    setNewEvent({
-      id: "",
-      eventType: "",
-      name: "",
-      organizer: "",
-      eventImage: "",
-      date: "",
-    });
-    setSelectOption("");
-  }
 
   function handleAddEvent(event) {
     setEvents([event, ...events]);
@@ -53,7 +38,7 @@ function App() {
       <Header />
       <main>
         <div className="new-event">
-          <NewEventForm />
+          <NewEventForm handleAddEvent={handleAddEvent}/>
         </div>
         <div className="events">
           <ul>
