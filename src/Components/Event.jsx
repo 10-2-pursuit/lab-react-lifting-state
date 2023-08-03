@@ -22,7 +22,7 @@ export default function Event({ events, setEvents, showAttendees, setShowAttende
                     {!showAttendees ? "Show Attendees" : "Hide Attendees"}
                   </button>
 
-                  {showAttendees ? ( <Attendees attandees={ attendees } events={ events } setEvents={ setEvents } event={ event }/> ) : null}
+                  {showAttendees ? (<Attendees attendees={ attendees } events={ events } setEvents={ setEvents } event={ event }/>) : null}
                 </>
               </li>
             </>

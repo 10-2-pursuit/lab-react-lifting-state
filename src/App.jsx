@@ -4,7 +4,7 @@ import { v1 as generateUniqueID } from "uuid";
 import Header from "./Components/Header";
 import NewEventForm from "./Components/NewEventForm";
 import Footer from "./Components/Footer";
-import Attendees from "./Components/Attendees";
+import Event from "./Components/Event";
 // import Attendees from "./Attendees";
 // import Event from "./Components/Event";
 // import Footer from "./Components/Footer";
@@ -36,20 +36,6 @@ function App() {
     setShowAttendees(!showAttendees);
   }
 
-  function updateEventAttendance(eventId, attendeeId) {
-    const eventArray = [...events];
-    const eventIndex = eventArray.findIndex((event) => eventId === event.id);
-    const event = { ...eventArray[eventIndex] };
-    const personIndex = event.people.findIndex(
-      (person) => person.id === attendeeId
-    );
-    const peopleArray = [...event.people];
-    peopleArray[personIndex].attendance = !peopleArray[personIndex].attendance;
-    event.people = peopleArray;
-    eventArray[eventIndex] = event;
-    setEvents(eventArray);
-  }
-
   return (
     <div className="App">
       <>
@@ -61,34 +47,7 @@ function App() {
             <NewEventForm handleAddEvent={ handleAddEvent } newEvent={ newEvent } setNewEvent={ setNewEvent }/>
           </>
         </div>
-        <div className="events">
-          <ul>
-            {events.map((event) => {
-              const { people: attendees } = event;
-
-              return (
-                <>
-                  <li key={event.id}>
-                    <img src={event.eventImage} alt={event.name} />
-                    <h5>
-                      {event.name} {event.eventType}
-                    </h5>
-                    <br />
-                    <span>Organized by: {event.organizer} </span>
-                    <br />
-                    <>
-                      <button onClick={toggleEventAttendees}>
-                        {!showAttendees ? "Show Attendees" : "Hide Attendees"}
-                      </button>
-
-                      {showAttendees ? (<Attendees attendees={ attendees } events={ events } setEvents={ setEvents } event={ event }/>) : null}
-                    </>
-                  </li>
-                </>
-              );
-            })}
-          </ul>
-        </div>
+        <Event events={ events } setEvents={ setEvents } showAttendees={ showAttendees } setShowAttendees={ setShowAttendees } toggleEventAttendees={ toggleEventAttendees }/>
       </main>
       <>
         <Footer />
