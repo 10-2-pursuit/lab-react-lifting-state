@@ -44,7 +44,7 @@ function App() {
       <main>
         <div className="new-event">
           <>
-            <NewEventForm handleAddEvent={ handleAddEvent } newEvent={ newEvent } setNewEvent={ setNewEvent }/>
+            <NewEventForm handleAddEvent={ handleAddEvent } newEvent={ newEvent } setNewEvent={ setNewEvent } generateUniqueID={ generateUniqueID } selectOption={ selectOption } setSelectOption={ setSelectOption }/>
           </>
         </div>
         <Event events={ events } setEvents={ setEvents } showAttendees={ showAttendees } setShowAttendees={ setShowAttendees } toggleEventAttendees={ toggleEventAttendees }/>

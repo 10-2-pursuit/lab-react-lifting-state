@@ -1,6 +1,6 @@
 import handleAddEvent from '/src/App.jsx'
 
-export default function NewEventForm({ handleAddEvent, newEvent, setNewEvent}) {
+export default function NewEventForm({ handleAddEvent, newEvent, setNewEvent, generateUniqueID, selectOption, setSelectOption}) {
   function addEvent() {
     const createEvent = {
       id: generateUniqueID(),
