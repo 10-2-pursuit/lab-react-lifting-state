@@ -14,8 +14,6 @@ import Event from "./Components/Event";
 function App() {
   const [events, setEvents] = useState(eventsData);
 
-  const [showAttendees, setShowAttendees] = useState(false);
-
   const [selectOption, setSelectOption] = useState("");
 
   const [newEvent, setNewEvent] = useState({
@@ -32,9 +30,7 @@ function App() {
     setEvents([event, ...events]);
   }
 
-  function toggleEventAttendees() {
-    setShowAttendees(!showAttendees);
-  }
+
 
   return (
     <div className="App">
@@ -47,7 +43,7 @@ function App() {
             <NewEventForm handleAddEvent={ handleAddEvent } newEvent={ newEvent } setNewEvent={ setNewEvent } generateUniqueID={ generateUniqueID } selectOption={ selectOption } setSelectOption={ setSelectOption }/>
           </>
         </div>
-        <Event events={ events } setEvents={ setEvents } showAttendees={ showAttendees } setShowAttendees={ setShowAttendees } toggleEventAttendees={ toggleEventAttendees }/>
+        <Event events={ events } setEvents={ setEvents } />
       </main>
       <>
         <Footer />
