@@ -4,7 +4,7 @@ import { v1 as generateUniqueID } from "uuid";
 import Header from "./Components/Header";
 import NewEventForm from "./Components/NewEventForm";
 import Footer from "./Components/Footer";
-import Attendee from "./Components/Attendee";
+import Attendees from "./Components/Attendees";
 // import Attendees from "./Attendees";
 // import Event from "./Components/Event";
 // import Footer from "./Components/Footer";
@@ -81,15 +81,7 @@ function App() {
                         {!showAttendees ? "Show Attendees" : "Hide Attendees"}
                       </button>
 
-                      {showAttendees ? (
-                        <div className="attendees">
-                          {attendees.map((attendee, index) => (
-                            <>
-                              <Attendee attendee={ attendee } index={ index } events={ events } setEvents={ setEvents } event={ event } />
-                            </>
-                          ))}
-                        </div>
-                      ) : null}
+                      {showAttendees ? (<Attendees attendees={ attendees } events={ events } setEvents={ setEvents } event={ event }/>) : null}
                     </>
                   </li>
                 </>

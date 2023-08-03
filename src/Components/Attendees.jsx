@@ -5,7 +5,7 @@ export default function Attendees({ attendees, events, setEvents, event }) {
     <div className="attendees">
       {attendees.map((attendee, index) => (
         <>
-          <Attendee attendee={ attendee } index={ index } events={ events } setEvents={ setEvents } event={ event }/>
+          <Attendee attendee={ attendee } index={ index } events={ events } setEvents={ setEvents } event={ event } />
         </>
       ))}
     </div>
