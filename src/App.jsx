@@ -1,9 +1,8 @@
 import { useState } from "react";
 import eventsData from "./data";
-import { v1 as generateUniqueID } from "uuid";
-// import Attendee from "./Components/Attendee";
-// import Attendees from "./Attendees";
-// import Event from "./Components/Event";
+import Attendee from "./Components/Attendee";
+import Attendees from "./Components/Attendees";
+import Event from "./Components/Event";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import NewEventForm from "./Components/NewEventForm";
@@ -46,6 +45,7 @@ function App() {
           <ul>
             {events.map((event) => {
               const { people: attendees } = event;
+              <Event event = {event} />
 
               return (
                 <>
@@ -57,6 +57,7 @@ function App() {
                     <br />
                     <span>Organized by: {event.organizer} </span>
                     <br />
+                    {/* <Attendees toggleEventAttendees = {toggleEventAttendees} /> */}
                     <>
                       <button onClick={toggleEventAttendees}>
                         {!showAttendees ? "Show Attendees" : "Hide Attendees"}
@@ -64,6 +65,7 @@ function App() {
 
                       {showAttendees ? (
                         <div className="attendees">
+                          {/* <Attendee updateEventAttendance = {updateEventAttendance} /> */}
                           {attendees.map((attendee, index) => (
                             <>
                               <div key={attendee.id} className="attendee">
@@ -79,22 +81,9 @@ function App() {
                                   </span>
                                 </p>
                                 <p>
-                                  <button
-                                    className="clickable"
-                                    onClick={() =>
-                                      updateEventAttendance(
-                                        event.id,
-                                        attendee.id
-                                      )
-                                    }
-                                  >
-                                    Attending:
-                                  </button>
-                                  <span>
-                                    {attendee.attendance ? "✅" : "❌"}
-                                  </span>
+                                  <button className="clickable" onClick={() => {updateEventAttendance}}> Attending: </button>
+                                  <span> {attendee.attendance ? "✅" : "❌"} </span>
                                 </p>
-
                                 <p>
                                   <span>Note:</span> {attendee.note}
                                 </p>
