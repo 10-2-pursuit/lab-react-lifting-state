@@ -1,4 +1,8 @@
-export default function Attendee({ attendee, event, updateEventAttendance }) {
+export default function Attendee({ 
+  attendee, 
+  event, 
+  updateEventAttendance }) {
+    
   return (
     <div key={attendee.id} className="attendee">
       <p>
