@@ -1,11 +1,12 @@
 import { useState } from "react";
 import eventsData from "./data";
-// import Attendee from "./Components/Attendee";
 // import Attendees from "./Components/Attendees";
 // import Event from "./Components/Event";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import NewEventForm from "./Components/NewEventForm";
+import Attendee from "./Components/Attendee";
+import Attendees from "./Components/Attendees";
 
 function App() {
   const [events, setEvents] = useState(eventsData);
@@ -48,7 +49,7 @@ function App() {
           <ul>
             {events.map((event) => {
               const { people: attendees, showAttendees } = event;
-
+              // <Event event = {event} updateEventAttendance = {updateEventAttendance} toggleEventAttendees = {toggleEventAttendees} />
               return (
                 <>
                   <li key={event.id}>
@@ -60,38 +61,14 @@ function App() {
                     <span>Organized by: {event.organizer} </span>
                     <br />
                     <>
+                    {/* <Attendees event = {event} updateEventAttendance = {updateEventAttendance} /> */}
                       <button onClick={() => toggleEventAttendees(event.id)}>
                         {!showAttendees ? "Show Attendees" : "Hide Attendees"}
                       </button>
                       {showAttendees && (
                         <div className="attendees">
                           {attendees.map((attendee) => (
-                            <div key={attendee.id} className="attendee">
-                              <p>
-                                <img
-                                  src={attendee.avatar}
-                                  alt={attendee.firstName}
-                                />
-                                {"   "}
-                                <span>
-                                  {" "}
-                                  {attendee.firstName} {attendee.lastName}{" "}
-                                </span>
-                              </p>
-                              <p>
-                                <button
-                                  className="clickable"
-                                  onClick={() =>
-                                    updateEventAttendance(event.id, attendee.id)
-                                  }
-                                >
-                                  Attending: {attendee.attendance ? "✅" : "❌"}
-                                </button>
-                              </p>
-                              <p>
-                                <span>Note:</span> {attendee.note}
-                              </p>
-                            </div>
+                           <Attendee event = {event} attendee={attendee} updateEventAttendance = {updateEventAttendance} />
                           ))}
                         </div>
                       )}
