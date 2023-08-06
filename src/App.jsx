@@ -49,7 +49,7 @@ function App() {
           <ul>
             {events.map((event) => {
               const { people: attendees, showAttendees } = event;
-              // <Event event = {event} updateEventAttendance = {updateEventAttendance} toggleEventAttendees = {toggleEventAttendees} />
+              // <Event  attendees={event.people} event = {event} updateEventAttendance = {updateEventAttendance} toggleEventAttendees = {toggleEventAttendees} />
               return (
                 <>
                   <li key={event.id}>
@@ -61,7 +61,7 @@ function App() {
                     <span>Organized by: {event.organizer} </span>
                     <br />
                     <>
-                    {/* <Attendees event = {event} updateEventAttendance = {updateEventAttendance} /> */}
+                    {/* <Attendees event = {event} attendees = {attendees} updateEventAttendance = {updateEventAttendance} toggleEventAttendees = {toggleEventAttendees} /> */}
                       <button onClick={() => toggleEventAttendees(event.id)}>
                         {!showAttendees ? "Show Attendees" : "Hide Attendees"}
                       </button>
