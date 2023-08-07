@@ -1,12 +1,9 @@
 import { useState } from "react";
 import eventsData from "./data";
-// import Attendees from "./Components/Attendees";
-// import Event from "./Components/Event";
+import Event from "./Components/Event";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import NewEventForm from "./Components/NewEventForm";
-import Attendee from "./Components/Attendee";
-import Attendees from "./Components/Attendees";
 
 function App() {
   const [events, setEvents] = useState(eventsData);
@@ -48,34 +45,8 @@ function App() {
         <div className="events">
           <ul>
             {events.map((event) => {
-              const { people: attendees, showAttendees } = event;
-              // <Event  attendees={event.people} event = {event} updateEventAttendance = {updateEventAttendance} toggleEventAttendees = {toggleEventAttendees} />
               return (
-                <>
-                  <li key={event.id}>
-                    <img src={event.eventImage} alt={event.name} />
-                    <h5>
-                      {event.name} {event.eventType}
-                    </h5>
-                    <br />
-                    <span>Organized by: {event.organizer} </span>
-                    <br />
-                    <>
-                    {/* <Attendees event = {event} attendees = {attendees} updateEventAttendance = {updateEventAttendance} toggleEventAttendees = {toggleEventAttendees} /> */}
-                      <button onClick={() => toggleEventAttendees(event.id)}>
-                        {!showAttendees ? "Show Attendees" : "Hide Attendees"}
-                      </button>
-                      {showAttendees && (
-                        <div className="attendees">
-                          {attendees.map((attendee) => (
-                           <Attendee event = {event} attendee={attendee} updateEventAttendance = {updateEventAttendance} />
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  </li>
-                </>
-              );
+              <Event key={event.id} showAttendees={event.showAttendees} attendees={event.people} event={event} updateEventAttendance={updateEventAttendance} toggleEventAttendees={toggleEventAttendees} />)
             })}
           </ul>
         </div>
