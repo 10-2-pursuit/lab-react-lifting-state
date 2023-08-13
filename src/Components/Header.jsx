@@ -1,3 +1,8 @@
 export default function Header() {
-  return;
+  return (
+    <header>
+      <h1>RSVP App</h1>
+    </header>
+);
 }
+
