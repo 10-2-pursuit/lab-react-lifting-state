@@ -4,6 +4,7 @@ import { v1 as generateUniqueID } from "uuid";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Attendee from "./Components/Attendee";
+import Attendees from "./Components/Attendees";
 // import Attendees from "./Attendees";
 // import Event from "./Components/Event";
 // import Footer from "./Components/Footer";
@@ -151,23 +152,11 @@ function App() {
                     <br />
                     <span>Organized by: {event.organizer} </span>
                     <br />
-                    <>
-                      <button onClick={toggleEventAttendees}>
-                        {!showAttendees ? "Show Attendees" : "Hide Attendees"}
-                      </button>
-
-                      {showAttendees ? (
-                        <div className="attendees">
-                          {attendees.map((attendee) => (
-                            <Attendee
-                              attendee={attendee}
-                              event={event}
-                              updateEventAttendance={updateEventAttendance}
-                            />
-                          ))}
-                        </div>
-                      ) : null}
-                    </>
+                    <Attendees
+                      event={event}
+                      setEvents={setEvents}
+                      events={events}
+                    />
                   </li>
                 </>
               );
