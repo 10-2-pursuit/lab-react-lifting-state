@@ -159,7 +159,11 @@ function App() {
                       {showAttendees ? (
                         <div className="attendees">
                           {attendees.map((attendee) => (
-                            <Attendee attendee={attendee} event={event} />
+                            <Attendee
+                              attendee={attendee}
+                              event={event}
+                              updateEventAttendance={updateEventAttendance}
+                            />
                           ))}
                         </div>
                       ) : null}
