@@ -1,4 +1,18 @@
-export default function Attendee({ attendee, event, updateEventAttendance }) {
+export default function Attendee({ attendee, event, setEvents, events }) {
+  function updateEventAttendance(eventId, attendeeId) {
+    const eventArray = [...events];
+    const eventIndex = eventArray.findIndex((event) => eventId === event.id);
+    const event = { ...eventArray[eventIndex] };
+    const personIndex = event.people.findIndex(
+      (person) => person.id === attendeeId
+    );
+    const peopleArray = [...event.people];
+    peopleArray[personIndex].attendance = !peopleArray[personIndex].attendance;
+    event.people = peopleArray;
+    eventArray[eventIndex] = event;
+    setEvents(eventArray);
+  }
+
   return (
     <>
       <div key={attendee.id} className="attendee">
