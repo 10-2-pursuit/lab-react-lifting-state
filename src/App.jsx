@@ -2,6 +2,7 @@ import { useState } from "react";
 import eventsData from "./data";
 import { v1 as generateUniqueID } from "uuid";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 // import Attendees from "./Attendees";
 // import Event from "./Components/Event";
 // import Footer from "./Components/Footer";
@@ -205,15 +206,7 @@ function App() {
           </ul>
         </div>
       </main>
-      <>
-        <footer>
-          <ul>
-            <li>Contact</li>
-            <li>About</li>
-            <li>Legal</li>
-          </ul>
-        </footer>
-      </>
+      <Footer />
     </div>
   );
 }
