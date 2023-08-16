@@ -92,9 +92,7 @@ function App() {
 
   return (
     <div className="App">
-      <>
-        <Header />
-      </>
+      <Header />
       <main>
         <div className="new-event">
           <>
