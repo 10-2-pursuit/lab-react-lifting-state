@@ -3,6 +3,7 @@ import eventsData from "./data";
 import { v1 as generateUniqueID } from "uuid";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import Attendee from "./Components/Attendee";
 // import Attendees from "./Attendees";
 // import Event from "./Components/Event";
 // import Footer from "./Components/Footer";
@@ -157,42 +158,8 @@ function App() {
 
                       {showAttendees ? (
                         <div className="attendees">
-                          {attendees.map((attendee, index) => (
-                            <>
-                              <div key={attendee.id} className="attendee">
-                                <p>
-                                  <img
-                                    src={attendee.avatar}
-                                    alt={attendee.firstName}
-                                  />
-                                  {"   "}
-                                  <span>
-                                    {" "}
-                                    {attendee.firstName} {attendee.lastName}{" "}
-                                  </span>
-                                </p>
-                                <p>
-                                  <button
-                                    className="clickable"
-                                    onClick={() =>
-                                      updateEventAttendance(
-                                        event.id,
-                                        attendee.id
-                                      )
-                                    }
-                                  >
-                                    Attending:
-                                  </button>
-                                  <span>
-                                    {attendee.attendance ? "✅" : "❌"}
-                                  </span>
-                                </p>
-
-                                <p>
-                                  <span>Note:</span> {attendee.note}
-                                </p>
-                              </div>
-                            </>
+                          {attendees.map((attendee) => (
+                            <Attendee attendee={attendee} event={event} />
                           ))}
                         </div>
                       ) : null}
