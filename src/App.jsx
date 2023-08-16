@@ -3,8 +3,7 @@ import eventsData from "./data";
 import { v1 as generateUniqueID } from "uuid";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import Attendee from "./Components/Attendee";
-import Attendees from "./Components/Attendees";
+import Event from "./Components/Event";
 // import Attendees from "./Attendees";
 // import Event from "./Components/Event";
 // import Footer from "./Components/Footer";
@@ -143,22 +142,10 @@ function App() {
               const { people: attendees } = event;
 
               return (
-                <>
-                  <li key={event.id}>
-                    <img src={event.eventImage} alt={event.name} />
-                    <h5>
-                      {event.name} {event.eventType}
-                    </h5>
-                    <br />
-                    <span>Organized by: {event.organizer} </span>
-                    <br />
-                    <Attendees
-                      event={event}
-                      setEvents={setEvents}
-                      events={events}
-                    />
-                  </li>
-                </>
+                <Event
+                  event={event}
+                  updateEventAttendance={updateEventAttendance}
+                />
               );
             })}
           </ul>
