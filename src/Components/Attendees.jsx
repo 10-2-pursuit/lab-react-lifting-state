@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Attendee from "./Attendee";
 
-export default function Attendees({ event, setEvents, events }) {
+export default function Attendees({ event, updateEventAttendance }) {
   const [showAttendees, setShowAttendees] = useState(false);
   const toggleEventAttendees = () => {
     setShowAttendees(!showAttendees);
@@ -18,8 +18,7 @@ export default function Attendees({ event, setEvents, events }) {
             <Attendee
               attendee={attendee}
               event={event}
-              setEvents={setEvents}
-              events={events}
+              updateEventAttendance={updateEventAttendance}
             />
           ))}
         </div>
